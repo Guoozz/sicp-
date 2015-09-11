@@ -1,0 +1,5 @@
+(define (Pascal-triangle row col)
+  (cond ((> col row ) (error "input error col > row"))
+        ((or (= col 1) (= col row)) 1)
+        (else (+ (Pascal-triangle (- row 1) (- col 1))
+            (Pascal-triangle (- row 1) col)))))
