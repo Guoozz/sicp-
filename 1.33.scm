@@ -1,0 +1,17 @@
+(define (accumulate combiner filter null-value term a next b)
+  (cond ((> a b) null-value)
+        ((filter a)
+        (combiner null-value (accumulate combiner filter null-value term (next a) next b)))
+        (else (combiner (term a) (accumulate combiner filter null-value term (next a) next b)))))
+
+(define (sum term filter a next b)
+  (define (combiner x y)
+    (+ x y))
+  (accumulate combiner filter 0 term a next b))
+
+(define (inc x) (+ x 1))
+(define (f x) x)
+(define (even? x) (= (remainder x 2) 0))
+(define (sum-odd-add a  b)
+  (sum f even? a inc b ))
+(define (all x) (= x x))
