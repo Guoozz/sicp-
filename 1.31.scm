@@ -20,7 +20,7 @@
 
 
 ;;Wallis product 参考 https://www.wikiwand.com/en/Wallis_product
-(define (Wallis-product a b)
+(define (Wallis-product n)
   (define (term n)
     (* (/ (* 2 n)
           (- (* 2 n) 1))
@@ -28,4 +28,4 @@
           (+ (* 2 n) 1))))
   (define (next n)
     (+ n 1))
-  (* 2.0 (product-iter a b term next)))
+  (* 2.0 (product-iter 1 n term next)))
