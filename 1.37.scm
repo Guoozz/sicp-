@@ -11,11 +11,10 @@
 ;; 迭代版本
 (define (cont-frac-iter n d k)
   (define (iter i result)
-    (if (= i 1)
+    (if (= i 0)
         result
-        (iter (- i 1) (/ (n i)
-                         ((lambda (a b c) (+ a (/ b c)))
-                          (n i) (d i) (+ (n (+ i 1)) result))))))
+        (iter (- i 1) ((lambda (a b c) (/ a (+ b c)))
+                       (n i) (d i)  result))))
   (iter k 0))
 
 ;; 计算黄金分割率
