@@ -18,7 +18,7 @@
   (iter k 0))
 
 ;; 计算黄金分割率
-(define (golden-ration k)
+(define (golden-ratio k)
   (/ 1 (cont-frac-iter (lambda (x) 1.0)
                        (lambda (x) 1.0)
                        k)))
