@@ -1,3 +1,4 @@
+# markdown 语法练习
 
 #浅谈递归和迭代
 
@@ -12,6 +13,6 @@
 #什么时候用迭代
 
 
-欢迎访问我的[github](www.github.com/guoozz)
+欢迎访问我的[github](https://www.github.com/guoozz)
 
 
