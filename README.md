@@ -12,7 +12,8 @@
 
 #什么时候用迭代
 
-
+#### below is a test code
+> (define (square a) (* a a))
 欢迎访问我的[github](https://www.github.com/guoozz)
 
 
