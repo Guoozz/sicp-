@@ -1,3 +1,0 @@
-Hello,Github one
-hello,github two
-hello,github three
