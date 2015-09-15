@@ -6,6 +6,3 @@
         cf
         (iter (compose f cf) (- n 1))))
   (iter f n))
-
-
-(define (inc x) (+ x 1))
