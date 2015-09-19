@@ -1,19 +1,15 @@
-(define (expond a n)
+(define (expmod a n m)
   (define (even? x) (= (remainder x 2) 0))
   (define (square x) (* x x))
   (if (= n 0)
       1
       (if (even? n)
-          (square (expond a (/ n 2)))
-          (* a (expond a (- n 1))))))
-
-(define (exp-mod base exp m)
-  (remainder (expond base exp) m))
-
+          (remainder (square (expmod a (/ n 2) m)) m)
+          (remainder (* (remainder a m) (expmod a (- n 1) m)) m))))
 
 (define (ferma-test n)
   (define (try-it a)
-    (= (exp-mod a n n) a))
+    (= (expmod a n n) a))
   (try-it (+ 1 (random (- n 1)))))
 
 (define (prime? n)
