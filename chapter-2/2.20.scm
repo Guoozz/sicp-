@@ -1,0 +1,12 @@
+(load "2.18.scm")
+;; 迭代版本,(iter l (cons (car l) c)) -> (iter (cdr l) (cons(carl) c))
+;;若l为空reverse(l)迭代结束
+(define (same-parity x . y)
+  (define (iter l c)
+    (let ((parity (remainder x 2)))
+      (if (null? l)
+          (reverse c)
+          (if (= (remainder (car l) 2) parity)
+              (iter (cdr l) (cons (car l) c))
+              (iter (cdr l) c)))))
+  (iter y (cons x ())))
