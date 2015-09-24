@@ -4,6 +4,6 @@
       nil
       (if (pair? tree)
           (append (deep-reverse (cdr tree))
-                  (cons (car tree) ()))
-          (list tree))
+                  (cons (deep-reverse (car tree)) nil))
+          tree)
           ))
