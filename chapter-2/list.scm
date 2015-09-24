@@ -1,3 +1,5 @@
+(define nil ())
+
 ;; 求表元素的数目
 ;; 递归求解 表 l 为空 len = 0 否则 len = 1 + len(cdr l)
 
@@ -38,3 +40,13 @@
         c
         (iter (- k 1) (cons (ref-list (- k 1) l1) c))))
   (iter (len l1) l2))
+
+(define (map p item)
+  (if (null? item)
+      nil
+      (cons (p (car item))
+            (map p  (cdr item)))))
+
+(define (square-list item)
+  (map (lambda (x) (* x x))
+       item))
