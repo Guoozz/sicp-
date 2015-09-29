@@ -1,5 +1,5 @@
 (load "../chapter-1/prime.scm")
-
+(load "flatmap.scm")
 (define (unique-pairs n)
   (flatmap (lambda (i)
              (map (lambda (j)

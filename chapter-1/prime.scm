@@ -14,7 +14,8 @@
 
 (define (prime? n)
   (define (fast-prime? n times)
-    (cond ((= times 0) true)
+    (cond ((= n 1) true)
+          ((= times 0) true)
           ((ferma-test n) (fast-prime? n (- times 1)))
           (else false)))
   (fast-prime? n 10))
