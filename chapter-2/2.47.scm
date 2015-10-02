@@ -25,5 +25,3 @@
 
 (define (edge2-frmae-c frame)
   (cdr (cdr frame)))
-
-(define frame-c (make-frame-c (make-vect 1 2) (make-vect 3 4) (make-vect 78 3)))
