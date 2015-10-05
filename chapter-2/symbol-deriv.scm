@@ -14,8 +14,31 @@
                                  (deriv (multiplicand exp) v))
                    (make-product (deriv (multiplier exp) v)
                                  (multiplicand exp)))
-                  (error "unknown expression type -- DERIV" exp))
-              ))))
+                  (if (exponentiation? exp)
+                      (make-product (make-product (exponent exp)
+                                                  (make-exponentiation (base exp)
+                                                                       (- (exponent exp) 1)))
+                                    (deriv (base exp) v))
+                      (error "unknown expression type -- DERIV" exp)))))))
+
+(define (make-exponentiation base exponent)
+  (if (=number? exponent 0)
+      1
+      (if (or (=number? base 1)
+              (=number? base 0)
+              (=number? exponent 1))
+          base
+          (list '** base exponent))))
+
+(define (base exp)
+  (cadr exp))
+
+(define (exponent exp)
+  (caddr exp))
+
+(define (exponentiation? exp)
+  (and (pair? exp)
+       (eq? (car exp) '**)))
 
 (define (variable? exp)
   (symbol? exp))
