@@ -1,0 +1,15 @@
+(define (equal? x y)
+  (if (and (null? x)
+           (null? y))
+      true
+      (if (and (pair? x)
+               (pair? y))
+          (and (equal? (car x) (car y))
+               (equal? (cdr x) (cdr y)))
+          (if (and (symbol? x)
+                   (symbol? y))
+              (if (eq? x y)
+                  true
+                  false)
+              false)
+          )))
