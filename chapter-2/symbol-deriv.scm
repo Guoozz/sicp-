@@ -102,10 +102,16 @@
   (cadr exp))
 
 (define (augend exp)
-  (caddr exp))
+  (if (null? (cdddr exp))
+      (caddr exp)
+      (cons '+  (cddr exp))))
 
 (define (multiplier exp)
   (cadr exp))
 
 (define (multiplicand exp)
-  (caddr exp))
+  (if (null? (cdddr exp))
+      (caddr exp)
+      (cons '*  (cddr exp))))
+
+; 将该程序扩展为任意多项,实际上是使其他项满足加式或乘式的定义
