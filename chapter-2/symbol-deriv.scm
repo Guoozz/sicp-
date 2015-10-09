@@ -17,7 +17,7 @@
                   (if (exponentiation? exp)
                       (make-product (make-product (exponent exp)
                                                   (make-exponentiation (base exp)
-                                                                       (- (exponent exp) 1)))
+                                                                       (make-sub (exponent exp) 1)))
                                     (deriv (base exp) v))
                       (error "unknown expression type -- DERIV" exp)))))))
 
@@ -29,6 +29,40 @@
               (=number? exponent 1))
           base
           (list '** base exponent))))
+
+(define (make-product exp1 exp2)
+  (if (or (=number? exp1 0)
+          (=number? exp2 0))
+      0
+      (if (=number? exp1 1)
+          exp2
+          (if (=number? exp2 1)
+              exp1
+              (if (and (number? exp1)
+                       (number? exp2))
+                  (* exp1 exp2)
+                  (list '* exp1 exp2))))))
+
+
+(define (make-sum exp1 exp2)
+  (if (=number? exp1 0)
+      exp2
+      (if (=number? exp2 0)
+          exp1
+          (if (and (number? exp1)
+                   (number? exp2))
+              (+ exp1 exp2)
+              (list '+ exp1 exp2)))))
+
+(define (make-sub exp1 exp2)
+  (if (=number? exp1 0)
+      (list '- 'exp2)
+      (if (=number? exp2 0)
+          exp1
+          (if (and (number? exp1)
+                   (number? exp2))
+              (- exp1 exp2)
+              (list '- exp1 exp2)))))
 
 (define (base exp)
   (cadr exp))
@@ -59,29 +93,7 @@
    (pair? exp)
    (eq? (car exp) '*)))
 
-(define (make-product exp1 exp2)
-  (if (or (=number? exp1 0)
-          (=number? exp2 0))
-      0
-      (if (=number? exp1 1)
-          exp2
-          (if (=number? exp2 1)
-              exp1
-              (if (and (number? exp1)
-                       (number? exp2))
-                  (* exp1 exp2)
-                  (list '* exp1 exp2))))))
 
-
-(define (make-sum exp1 exp2)
-  (if (=number? exp1 0)
-      exp2
-      (if (=number? exp2 0)
-          exp1
-          (if (and (number? exp1)
-                   (number? exp2))
-                   (+ exp1 exp2)
-                   (list '+ exp1 exp2)))))
 
 (define (=number? exp num)
   (and (number? exp) (= exp num)))
