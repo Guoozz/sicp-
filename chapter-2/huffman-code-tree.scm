@@ -7,8 +7,8 @@
   (list left right
         (+ (weight left)
            (weight right))
-        (append (symbols right)
-                (symbols left))))
+        (append (symbols left)
+                (symbols right))))
 
 ;; 编码树的选择函数
 
@@ -55,4 +55,4 @@
       (let ((pair (car pairs)))
         (adjoin-set (make-leaf (car pair)
                                (cadr pair))
-                    (adjoin-set (cdr pairs))))))
+                    (make-leaf-set (cdr pairs))))))
