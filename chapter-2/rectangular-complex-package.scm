@@ -1,8 +1,5 @@
 (load "tagged-data.scm")
-
-;; get,put 定义
-(define get 2d-get)
-(define put 2d-put!)
+(load "get-put.scm")
 
 (define (install-rectangular-package)
   (define (real-part z) (car z))
@@ -16,10 +13,10 @@
 
   ;; interface to the rest of system
   (define (tags x) (attach-tag 'rectangular x))
-  (put 'real-part 'rectangular real-part)
-  (put 'imag-part 'rectangular imag-part)
-  (put 'angle 'rectangular angle)
-  (put 'magnitude 'rectangular magnitude)
+  (put 'real-part '(rectangular) real-part)
+  (put 'imag-part '(rectangular) imag-part)
+  (put 'angle '(rectangular) angle)
+  (put 'magnitude '(rectangular) magnitude)
   (put 'make-from-real-imag 'rectangular
        (lambda (x y) (tags (make-from-real-imag x y))))
   (put 'make-from-mag-ang 'rectangular
