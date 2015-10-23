@@ -17,7 +17,7 @@
 
 (define (div-rat x y)
   (make-rat (* (numer x) (denom y))
-            (* (denom x) (denom y))))
+            (* (denom x) (numer y))))
 
 (define (equal-rat? x y)
   (= (* (numer x) (denom y))
