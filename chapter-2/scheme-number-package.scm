@@ -16,6 +16,9 @@
        (lambda (x y) (= (contents x) (contents y))))
   (put 'make 'scheme-number
        (lambda (x) (tag x)))
+  (put '=zero? '(scheme-number)
+       (lambda (x)
+         (= x 0)))
   'done)
 
 (define (make-scheme-number n)

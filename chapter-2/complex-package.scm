@@ -71,6 +71,10 @@
        (lambda (z1 z2)
          (and (= (real-part z1) (real-part z2))
               (= (imag-part z1) (imag-part z2)))))
+  (put '=zero? '(complex)
+       (lambda (z1)
+         (and (= (real-part z1) 0)
+              (= (imag-part z1) 0))))
 
   'done)
 
