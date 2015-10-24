@@ -13,7 +13,7 @@
   (put 'div '(scheme-number scheme-number)
        (lambda (x y) (tag (/ x y))))
   (put 'equ? '(scheme-number scheme-number)
-       (lambda (x y) (= (contents x) (contents y))))
+       (lambda (x y) (= x y)))
   (put 'make 'scheme-number
        (lambda (x) (tag x)))
   (put '=zero? '(scheme-number)
