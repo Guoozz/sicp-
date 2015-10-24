@@ -20,7 +20,6 @@
   ((get 'make 'scheme-number) n))
 
 (install-scheme-number-package)
-
 ;; only for testing
 
 (define x (make-scheme-number 1))
