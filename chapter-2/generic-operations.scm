@@ -1,6 +1,7 @@
 (load "apply-generic.scm")
 (load "scheme-number-package.scm")
 (load "rational-package.scm")
+(load "complex-package.scm")
 
 ;; 定义一个通用型的算术运算
 

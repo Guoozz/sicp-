@@ -17,5 +17,7 @@
 
 (install-rational-package)
 
+;;only for testing
+
 (define x (make-rational 3 4))
 (define y (make-rational 2 4))
