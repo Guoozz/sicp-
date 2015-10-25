@@ -1,6 +1,3 @@
-(load "tagged-data.scm")
-(load "get-put.scm")
-
 (define get-coercion get)
 
 (define (apply-generic op . args)
@@ -20,3 +17,6 @@
                         (t2->t1 (apply-generic op a1 (t2->t1 a2)))
                         (else (error "no such method --APPLY-GENERIC" (list op type-tags))))))
               (error "no such method --APPLY-GENERIC" (list op type-tags)))))))
+
+(define (raise x)
+  (apply-generic 'raise x))

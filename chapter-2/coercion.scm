@@ -1,7 +1,3 @@
-(load "get-put.scm")
-(load "scheme-number-package.scm")
-(load "complex-package.scm")
-
 (define put-coercion put)
 (define get-coercion get)
 

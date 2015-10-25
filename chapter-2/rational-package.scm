@@ -1,8 +1,7 @@
 (load "rational.scm")
-(load "tagged-data.scm")
-(load "get-put.scm")
 
 (define (install-rational-package)
+  (define make-real (get 'make 'scheme-number))
   (define (tag x) (attach-tag 'rational x))
   (put 'add '(rational rational) (lambda (x y) (tag (add-rat x y))))
   (put 'sub '(rational rational) (lambda (x y) (tag (sub-rat x y))))
@@ -17,14 +16,11 @@
   (put '=zero? '(rational)
        (lambda (x)
          (= (numer x) 0)))
+  (put 'raise '(rational)
+       (lambda (x) (make-real (add (make-real (/ (numer x)
+                                                 (denom x)))
+                                   (make-real 0.0)))))
   'done)
 
 (define (make-rational n d)
   ((get 'make 'rational) n d))
-
-(install-rational-package)
-
-;;only for testing
-
-(define x (make-rational 3 4))
-(define y (make-rational 2 4))

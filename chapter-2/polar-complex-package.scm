@@ -1,6 +1,3 @@
-(load "tagged-data.scm")
-(load "get-put.scm")
-
 (define (install-polar-package)
   (define (magnitude z) (car z))
   (define (angle z) (cdr z))

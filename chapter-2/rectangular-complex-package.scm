@@ -1,6 +1,3 @@
-(load "tagged-data.scm")
-(load "get-put.scm")
-
 (define (install-rectangular-package)
   (define (real-part z) (car z))
   (define (imag-part z) (cdr z))

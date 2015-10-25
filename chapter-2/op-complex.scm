@@ -1,9 +1,9 @@
+(load "get-put.scm")
+(load "tagged-data.scm")
 (load "rectangular-complex-package.scm")
 (load "polar-complex-package.scm")
 (load "apply-generic.scm")
 
-(install-polar-package)
-(install-rectangular-package)
 
 (define (add-complex z1 z2)
   (make-from-real-imag (+ (real-part z1)

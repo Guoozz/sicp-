@@ -78,8 +78,6 @@
 
   'done)
 
-(install-complex-package)
-
 (define (make-complex-from-real-imag x y)
   ((get 'make-from-real-imag 'complex) x y))
 
@@ -90,7 +88,3 @@
 (define (imag-part z) (apply-generic 'imag-part z))
 (define (magnitude z) (apply-generic 'magnitude z))
 (define (angle z) (apply-generic 'angle z))
-
-;;only for testing
-(define x (make-complex-from-mag-ang 3 4))
-(define y (make-complex-from-real-imag 1 2))
