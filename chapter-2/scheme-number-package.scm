@@ -18,7 +18,9 @@
          (= x 0)))
   (put 'raise '(scheme-number)
        (lambda (x)
-             (make-complex-from-real-imag x 0)))
+         (if (exact-integer? x)
+             (make-rational x 1)
+             (make-complex-from-real-imag x 0))))
   'done)
 
 (define (make-scheme-number n)
