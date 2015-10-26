@@ -30,3 +30,20 @@
 
 (define (=zero? x)
   (apply-generic '=zero? x))
+
+(define (project x)
+  ((get  'project (type-tag x)) (contents x)))
+
+(define (drop x)
+  (if (drop? x)
+      (drop (project x))
+      x))
+
+(define (drop? x)
+  (if (not (boolean? x)) ;; 防止对equ?过程生成的结果进行drop 或 project
+      (let ((dropped (project x)))
+        (if (and (> (level x) 1)
+                 (equ? (raise dropped) x))
+            true
+            false))
+      false))

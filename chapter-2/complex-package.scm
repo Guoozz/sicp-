@@ -75,7 +75,9 @@
        (lambda (z1)
          (and (= (real-part z1) 0)
               (= (imag-part z1) 0))))
-
+  (put 'project 'complex
+       (lambda (x)
+         (exact->inexact (real-part x))))
   'done)
 
 (define (make-complex-from-real-imag x y)

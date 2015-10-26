@@ -1,10 +1,8 @@
-(define get-coercion get)
-
 (define (apply-generic op . args)
   (let ((type-tags (map type-tag args)))
     (let ((proc (get op type-tags)))
       (if proc
-          (apply proc (map contents args))
+          (drop (apply proc (map contents args)))
           (if (= (length type-tags) 2)
               (let ((a1 (car args))
                     (a2 (cadr args)))
@@ -15,8 +13,9 @@
                         (else (error "no such method --APPLY-GENERIC" (list op type-tags))))))
               (error "no such method --APPLY-GENERIC" (list op type-tags)))))))
 
+
 (define (raise x)
-  (apply-generic 'raise x))
+  ((get 'raise  (type-tag x)) (contents x)))
 
 (define (level x)
   (let ((type (type-tag x))

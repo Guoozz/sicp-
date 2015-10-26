@@ -16,10 +16,14 @@
   (put '=zero? '(rational)
        (lambda (x)
          (= (numer x) 0)))
-  (put 'raise '(rational)
-       (lambda (x) (make-real (add (make-real (/ (numer x)
-                                                 (denom x)))
-                                   (make-real 0.0)))))
+  (put 'raise 'rational
+       (lambda (x) (exact->inexact (/ (numer x)
+                                      (denom x)))))
+  (put 'project 'rational
+       (lambda (x)
+         (inexact->exact
+          (round (/ (numer x)
+                    (denom x))))))
   'done)
 
 (define (make-rational n d)
