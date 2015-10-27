@@ -8,7 +8,7 @@
  (make-from-real-imag (add (real-part x)
                            (real-part y))
                       (add (imag-part x)
-                           (imag-part y)
+                           (imag-part y))))
 ```
 
 其中add为通用计算过程
