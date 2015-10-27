@@ -26,7 +26,17 @@
          (if (exact-integer? x)
              x
              (inexact->exact (round x)))))
-  'done)
+  (put 'sine '(scheme-number)
+       (lambda (x) (tag (sin x))))
+  (put 'cosine '(scheme-number)
+       (lambda (x) (tag (cos x))))
+  (put 'g-atan '(scheme-number scheme-number)
+       (lambda (x y) (tag (atan x y))))
+  (put 'g-sqrt '(scheme-number)
+       (lambda (x) (tag (sqrt x))))
+  (put 'g-square '(scheme-number)
+       (lambda (x) (tag (square x))))
+   'done)
 
 (define (make-scheme-number n)
   ((get 'make 'scheme-number) n))

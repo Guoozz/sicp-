@@ -39,11 +39,18 @@
       (drop (project x))
       x))
 
-(define (drop? x)
-  (if (not (boolean? x)) ;; 防止对equ?过程生成的结果进行drop 或 project
-      (let ((dropped (project x)))
-        (if (and (> (level x) 1)
-                 (equ? (raise dropped) x))
-            true
-            false))
-      false))
+(define (raise x)
+  ((get 'raise  (type-tag x)) (contents x)))
+
+;; 增加sin cos atan sqrt square 通用型计算过程
+
+(define (sine x) (apply-generic 'sine x))
+
+(define (cosine x) (apply-generic 'cosine x))
+
+(define (g-atan x y)
+  (apply-generic 'g-atan x y))
+
+(define (g-sqrt x) (apply-generic 'g-sqrt x))
+
+(define (g-square x) (apply-generic 'g-square x))

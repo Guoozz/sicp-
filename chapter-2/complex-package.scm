@@ -28,8 +28,8 @@
   (define (sub-complex z1 z2)
     (make-from-real-imag (sub (real-part z1)
                               (real-part z2))
-                         (sub (real-part z1)
-                              (real-part z2))))
+                         (sub (imag-part z1)
+                              (imag-part z2))))
 
   (define (mul-complex z1 z2)
     (make-from-mag-ang (mul (magnitude z1)

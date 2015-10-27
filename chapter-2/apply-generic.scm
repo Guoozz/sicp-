@@ -13,10 +13,6 @@
                         (else (error "no such method --APPLY-GENERIC" (list op type-tags))))))
               (error "no such method --APPLY-GENERIC" (list op type-tags)))))))
 
-
-(define (raise x)
-  ((get 'raise  (type-tag x)) (contents x)))
-
 (define (level x)
   (let ((type (type-tag x))
         (data (contents x)))
@@ -24,3 +20,12 @@
           ((eq? type 'scheme-number) (if (exact-integer? data) 1 3))
           ((eq? type 'complex) 4)
           (else (error "no such types --LEVEL" type)))))
+
+(define (drop? x)
+  (if (not (boolean? x)) ;; 防止对equ?过程生成的结果进行drop 或 project
+      (let ((dropped (project x)))
+        (if (and (> (level x) 1)
+                 (equ? (raise dropped) x))
+            true
+            false))
+      false))
