@@ -6,4 +6,4 @@
 \#*
 *.c
 sum.scm
-*.test.scm
+*test*
