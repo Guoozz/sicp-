@@ -1,0 +1,6 @@
+(define (make-monitored arg)
+  (let ((accumulator 0))
+    (lambda (m)
+      (cond ((eq? m 'how-many-calls?) accumulator)
+            ((eq? m 'reset-count) (begin (set! accumulator 0) accumulator))
+            (else (begin (set! accumulator (+ accumulator 1)) (arg m)))))))
