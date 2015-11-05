@@ -1,0 +1,6 @@
+(define (monte-carlo trials experiment)
+  (define (iter rest-trials pass-trials)
+    (cond ((= rest-trials 0) (/ pass-trials trials))
+          ((experiment) (iter (- rest-trials 1) (+ pass-trials 1)))
+          (else (iter (- rest-trials 1) pass-trials))))
+  (iter trials 0))
