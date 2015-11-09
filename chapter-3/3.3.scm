@@ -1,4 +1,5 @@
 ;; 例题3.7通过将密码保存在列表中,实现账号共享
+;; 这样写有一个弊端,没有实现账户与密码一对一的关系,即账户可以输入密码列表中的任意一个对账户进行访问.
 
 (define (make-account balance secret-number)
   (define (withdraw amount)
