@@ -3,6 +3,7 @@
 (define (circle-list? l)
   (define (iter rest visited-set)
     (cond ((null? rest) false)
+          ((pair? (car rest)) (and (iter (car rest) '()) (iter (cdr rest) (adjoin (cdr rest) visited-set))))
           ((in-set? (cdr rest) visited-set) true)
           (else (iter (cdr rest) (adjoin (cdr rest) visited-set)))))
   (iter l '()))
