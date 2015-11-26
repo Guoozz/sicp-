@@ -9,7 +9,7 @@
 
     (define (insert! item)
       (let ((new-pair (cons item '())))
-        (cond ((empty?) (set! front-ptr new-pair) ;;无法对null表进行cdr
+        (cond ((empty?) (set! front-ptr new-pair)
                       (set! rear-ptr new-pair)
                       front-ptr)
               (else (set-cdr! rear-ptr new-pair)
