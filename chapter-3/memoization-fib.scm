@@ -1,0 +1,13 @@
+(load "one-dimensional-table.scm")
+
+(define (mem-fib)
+  (let ((fib-table (make-table)))
+    (define (iter n)
+      (let ((value (look-up n fib-table)))
+        (cond ((or (= n 0) (= n 1)) n)
+              (value value)
+              (else (let ((result (+ (iter (- n 1))
+                                     (iter (- n 2)))))
+                      (insert! n result fib-table)
+                      result)))))
+    iter))
